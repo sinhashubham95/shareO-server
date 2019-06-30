@@ -62,20 +62,20 @@ type CustomImageSearch struct {
 }
 
 // GetImageList is used to fetch image list from Google Custom Search API
-func GetImageList(searchType string, startIndex int) (*PaginatedImageList, error) {
+func GetImageList(searchString string, startIndex int) (*PaginatedImageList, error) {
 	// constants
 	customSearchURL := config.GET("customSearchURL")
 	key := "key"
 	cx := "cx"
 	q := "q"
 	safe := "safe"
-	searchType = "searchType"
+	searchType := "searchType"
 	start := "start"
 	// initializing query params
 	queryParams := make(map[string]string)
 	queryParams[key] = config.GET("customSearchKey")
 	queryParams[cx] = config.GET("customSearchClient")
-	queryParams[q] = getImageSearchString(searchType)
+	queryParams[q] = getImageSearchString(searchString)
 	queryParams[safe] = "active"
 	queryParams[searchType] = "image"
 	queryParams[start] = getImageStartIndex(startIndex)
@@ -98,15 +98,15 @@ func getImageSearchString(searchType string) string {
 	// test
 	switch strings.ToLower(searchType) {
 	case morning:
-		return good + morning
+		return good + " " + morning
 	case afternoon:
-		return good + afternoon
+		return good + " " + afternoon
 	case evening:
-		return good + evening
+		return good + " " + evening
 	case night:
-		return good + night
+		return good + " " + night
 	}
-	return good + morning
+	return good + " " + morning
 }
 
 func getImageStartIndex(startIndex int) string {

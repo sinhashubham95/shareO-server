@@ -2,7 +2,6 @@ package graphql
 
 import (
 	"github.com/graphql-go/graphql"
-	"github.com/graphql-go/relay"
 	"log"
 )
 
@@ -33,7 +32,6 @@ func setDimension() {
 		Name:        "Dimension",
 		Description: "Dimension Information including height and width.",
 		Fields: graphql.Fields{
-			"id": relay.GlobalIDField("Dimension", nil),
 			"height": &graphql.Field{
 				Name:        "Height",
 				Type:        graphql.Int,
@@ -53,7 +51,6 @@ func setImage() {
 		Name:        "Image",
 		Description: "Image Information",
 		Fields: graphql.Fields{
-			"id": relay.GlobalIDField("Image", nil),
 			"title": &graphql.Field{
 				Name:        "Title",
 				Type:        graphql.String,
@@ -83,7 +80,6 @@ func setPage() {
 		Name:        "Page",
 		Description: "Page Information",
 		Fields: graphql.Fields{
-			"id": relay.GlobalIDField("Page", nil),
 			"count": &graphql.Field{
 				Name:        "Count",
 				Type:        graphql.Int,
@@ -113,7 +109,6 @@ func setPaginatedImageList() {
 		Name:        "PaginatedImageList",
 		Description: "List of images along with the pagination information",
 		Fields: graphql.Fields{
-			"id": relay.GlobalIDField("Paginated Image List", nil),
 			"data": &graphql.Field{
 				Name:        "Data",
 				Type:        graphql.NewList(image),
