@@ -7,13 +7,19 @@ import (
 )
 
 func main() {
+	r := gin.Default()
+	r.Any("/graphql", graphqlHandler())
+	r.Run(":8080")
+}
+
+func graphqlHandler() gin.HandlerFunc {
 	h := handler.New(&handler.Config{
 		Schema:     graphql.GetSchema(),
 		Pretty:     true,
-		GraphiQL:   true,
+		GraphiQL:   false,
 		Playground: true,
 	})
-	r := gin.Default()
-	r.Any("/graphql", h)
-	r.Run(":8080")
+	return func(c *gin.Context) {
+		h.ServeHTTP(c.Writer, c.Request)
+	}
 }

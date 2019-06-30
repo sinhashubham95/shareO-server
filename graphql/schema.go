@@ -85,7 +85,7 @@ func setPage() {
 		Fields: graphql.Fields{
 			"id": relay.GlobalIDField("Page", nil),
 			"pageNumber": &graphql.Field{
-				Name:        "Page Number",
+				Name:        "PageNumber",
 				Type:        graphql.Int,
 				Description: "Page Number",
 			},
@@ -95,17 +95,17 @@ func setPage() {
 				Description: "Page Number",
 			},
 			"start": &graphql.Field{
-				Name:        "Start",
+				Name:        "StartIndex",
 				Type:        graphql.Int,
 				Description: "Start index of the current list of items returned",
 			},
 			"nextStart": &graphql.Field{
-				Name:        "Next Start",
+				Name:        "NextStartIndex",
 				Type:        graphql.Int,
 				Description: "Start index of the next list of items returned that will be returned",
 			},
 			"isLastPage": &graphql.Field{
-				Name:        "Is Last Page",
+				Name:        "IsLastPage",
 				Type:        graphql.Boolean,
 				Description: "This page returned is the last page or there are more items remaining.",
 			},
@@ -115,7 +115,7 @@ func setPage() {
 
 func setPaginatedImageList() {
 	paginatedImageList = graphql.NewObject(graphql.ObjectConfig{
-		Name:        "Paginated Image List",
+		Name:        "PaginatedImageList",
 		Description: "List of images along with the pagination information",
 		Fields: graphql.Fields{
 			"id": relay.GlobalIDField("Paginated Image List", nil),
@@ -139,13 +139,13 @@ func setQuery() {
 		Description: "Queries that the server will serve.",
 		Fields: graphql.Fields{
 			"imageList": &graphql.Field{
-				Name: "Image List",
+				Name: "ImageList",
 				Type: paginatedImageList,
 				Args: graphql.FieldConfigArgument{
 					"type": &graphql.ArgumentConfig{
 						Type:         graphql.String,
 						DefaultValue: "morning",
-						Description:  "Morning, afternoon, evening or night.",
+						Description:  "morning, afternoon, evening or night.",
 					},
 					"start": &graphql.ArgumentConfig{
 						Type:         graphql.Int,
@@ -161,6 +161,6 @@ func setQuery() {
 }
 
 // GetSchema is used to get the schema
-func GetSchema() graphql.Schema {
-	return schema
+func GetSchema() *graphql.Schema {
+	return &schema
 }
