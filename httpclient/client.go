@@ -22,14 +22,15 @@ func init() {
 // GET request
 func GET(url string, headerParams, queryParams map[string]string, cacheEnabled bool,
 	data interface{}) error {
+	totalURL := addQueryParameters(url, queryParams)
 	// check in the cache if cache is enabled
 	if cacheEnabled {
-		err := cache.GetInterface("", data)
-		if err != nil {
+		err := cache.GetInterface(totalURL, data)
+		if err == nil {
 			return nil
 		}
 	}
-	request, err := http.NewRequest("GET", addQueryParameters(url, queryParams), nil)
+	request, err := http.NewRequest("GET", totalURL, nil)
 	if err != nil {
 		return err
 	}
@@ -44,7 +45,7 @@ func GET(url string, headerParams, queryParams map[string]string, cacheEnabled b
 	}
 	// save in cache if cache is enabled
 	if cacheEnabled {
-		cache.SetInterface("", data)
+		cache.SetInterface(totalURL, data)
 	}
 	return nil
 }

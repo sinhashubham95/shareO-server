@@ -11,7 +11,9 @@
       "mode": "debug",
       "program": "${workspaceFolder}",
       "env": {},
-      "args": []
+      "args": [
+        "CONFIG_FILE=/Users/s0s01qp/Documents/hackathon/shareO-server/.config.json"
+      ]
     }
   ]
 }

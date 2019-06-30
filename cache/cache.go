@@ -21,7 +21,7 @@ func init() {
 		MinIdleConns: 10,
 	})
 	res, err := client.Ping().Result()
-	if err == nil {
+	if err != nil {
 		Close()
 		log.Fatalf("Test redis connection %+v.", res)
 	}

@@ -1,6 +1,7 @@
 package external
 
 import (
+	"github.com/sinhashubham95/shareO-server/config"
 	"github.com/sinhashubham95/shareO-server/httpclient"
 	"strconv"
 	"strings"
@@ -42,8 +43,8 @@ type Queries struct {
 
 // Dimension is the type for dimension
 type Dimension struct {
-	Height string `json:"height"`
-	Width  string `json:"width"`
+	Height int `json:"height"`
+	Width  int `json:"width"`
 }
 
 // SearchItem is the type for search item
@@ -63,7 +64,7 @@ type CustomImageSearch struct {
 // GetImageList is used to fetch image list from Google Custom Search API
 func GetImageList(searchType string, startIndex int) (*PaginatedImageList, error) {
 	// constants
-	customSearchURL := "https://www.googleapis.com/customsearch/v1"
+	customSearchURL := config.GET("customSearchURL")
 	key := "key"
 	cx := "cx"
 	q := "q"
@@ -72,8 +73,8 @@ func GetImageList(searchType string, startIndex int) (*PaginatedImageList, error
 	start := "start"
 	// initializing query params
 	queryParams := make(map[string]string)
-	queryParams[key] = "AIzaSyBaIIUZ9DOGOqQQI8t3339Z7MmJyCbP3ko"
-	queryParams[cx] = "000674355350253632341:xp3u_vx45me"
+	queryParams[key] = config.GET("customSearchKey")
+	queryParams[cx] = config.GET("customSearchClient")
 	queryParams[q] = getImageSearchString(searchType)
 	queryParams[safe] = "active"
 	queryParams[searchType] = "image"

@@ -36,12 +36,12 @@ func setDimension() {
 			"id": relay.GlobalIDField("Dimension", nil),
 			"height": &graphql.Field{
 				Name:        "Height",
-				Type:        graphql.String,
+				Type:        graphql.Int,
 				Description: "Height of the image",
 			},
 			"width": &graphql.Field{
 				Name:        "Width",
-				Type:        graphql.String,
+				Type:        graphql.Int,
 				Description: "Width of the image",
 			},
 		},

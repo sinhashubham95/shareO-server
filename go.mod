@@ -3,6 +3,7 @@ module github.com/sinhashubham95/shareO-server
 go 1.12
 
 require (
+	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gin-gonic/gin v1.4.0
 	github.com/go-redis/redis v6.15.2+incompatible
 	github.com/graphql-go/graphql v0.7.8
