@@ -84,11 +84,6 @@ func setPage() {
 		Description: "Page Information",
 		Fields: graphql.Fields{
 			"id": relay.GlobalIDField("Page", nil),
-			"pageNumber": &graphql.Field{
-				Name:        "PageNumber",
-				Type:        graphql.Int,
-				Description: "Page Number",
-			},
 			"count": &graphql.Field{
 				Name:        "Count",
 				Type:        graphql.Int,
