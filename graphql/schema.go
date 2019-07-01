@@ -64,7 +64,7 @@ func setImage() {
 			"type": &graphql.Field{
 				Name:        "Type",
 				Type:        graphql.String,
-				Description: "Type of the image like jpg, gif, etc.",
+				Description: "Type of the image like jpg, gif, png etc.",
 			},
 			"dimension": &graphql.Field{
 				Name:        "Dimension",
