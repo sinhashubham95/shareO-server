@@ -12,7 +12,7 @@ func main() {
 	defer close()
 	r := gin.Default()
 	r.Any("/graphql", graphqlHandler())
-	r.Run(config.GET("port"))
+	r.Run(config.GET("PORT"))
 }
 
 func graphqlHandler() gin.HandlerFunc {
