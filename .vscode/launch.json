@@ -12,7 +12,7 @@
       "program": "${workspaceFolder}",
       "env": {},
       "args": [
-        "CONFIG_FILE=/Users/s0s01qp/Documents/hackathon/shareO-server/.config.json"
+        "CONFIG_FILE=${workspaceFolder}/.config.json"
       ]
     }
   ]
