@@ -18,12 +18,12 @@ var (
 )
 
 func init() {
-	// path = getConfigFilePath()
-	// err := updateConfigFileData()
-	// if err != nil {
-	// 	log.Fatal("Error initializing config file.")
-	// }
-	// watchConfigFile()
+	path = getConfigFilePath()
+	err := updateConfigFileData()
+	if err != nil {
+		log.Fatal("Error initializing config file.")
+	}
+	watchConfigFile()
 }
 
 func updateConfigFileData() error {
@@ -101,8 +101,7 @@ func watchConfigFile() {
 
 // GET is used to get the value for a config
 func GET(key string) string {
-	// mu.RLock()
-	// defer mu.RUnlock()
-	// return configs[key]
-	return os.Getenv(key)
+	mu.RLock()
+	defer mu.RUnlock()
+	return configs[key]
 }
