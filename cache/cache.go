@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/go-redis/redis"
+	"github.com/sinhashubham95/shareO-server/config"
 	"log"
 	"time"
 )
@@ -14,11 +15,15 @@ var (
 )
 
 func init() {
-	url := "localhost:6379"
+	url := config.GET("cacheUrl")
 	client = redis.NewClient(&redis.Options{
 		Addr:         url,
 		PoolSize:     20,
 		MinIdleConns: 10,
+		Password:     config.GET("cachePassword"),
+		DialTimeout:  time.Second * 20,
+		ReadTimeout:  time.Second * 20,
+		WriteTimeout: time.Second * 20,
 	})
 	res, err := client.Ping().Result()
 	if err != nil {
